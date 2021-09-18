@@ -8,6 +8,7 @@ namespace PIS.ApiModels.Departures.Featured
         public DecoratedName LineName { get; set; }
         
         public string Destination { get; set; }
+        public string Track { get; set; }
         
         public DateTime ScheduledDeparture { get; set; }
         public DateTime? ExpectedDeparture { get; set; }

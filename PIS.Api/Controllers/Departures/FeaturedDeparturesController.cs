@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using PIS.ApiModels;
 using PIS.ApiModels.Departures.Featured;
@@ -8,6 +9,7 @@ namespace PIS.Api.Controllers.Departures
 {
     [Route("v1/Departures/{regionKey}/{stationKey}/Featured")]
     [ApiController]
+    [EnableCors]
     public class FeaturedDeparturesController : ControllerBase
     {
         [HttpGet("{groupKey}")]
@@ -25,7 +27,7 @@ namespace PIS.Api.Controllers.Departures
                         DestinationNote = "",
                         Departures = new()
                         {
-                            MakeDeparture(DateTime.UtcNow.AddMinutes(5), DateTime.UtcNow.AddMinutes(5), "re", "Næstved", "1234"),
+                            MakeDeparture(DateTime.UtcNow.AddMinutes(1), DateTime.UtcNow.AddMinutes(1), "re", "Næstved", "1234"),
                             MakeDeparture(DateTime.UtcNow.AddMinutes(35), DateTime.UtcNow.AddMinutes(45), "ic", "Esbjerg", "816"),
                         }
                     },
@@ -37,7 +39,7 @@ namespace PIS.Api.Controllers.Departures
                         DestinationNote = "",
                         Departures = new()
                         {
-                            MakeDeparture(DateTime.UtcNow.AddMinutes(5), DateTime.UtcNow.AddMinutes(5), "re", "Næstved", "1234"),
+                            MakeDeparture(DateTime.UtcNow.AddMinutes(2), DateTime.UtcNow.AddMinutes(2), "re", "Næstved", "1235"),
                             MakeDeparture(DateTime.UtcNow.AddMinutes(35), DateTime.UtcNow.AddMinutes(45), "re", "Nykøbing Falster", "1423"),
                         }
                     },
@@ -49,7 +51,7 @@ namespace PIS.Api.Controllers.Departures
                         DestinationNote = "Copenhagen Airport",
                         Departures = new()
                         {
-                            MakeDeparture(DateTime.UtcNow.AddMinutes(5), DateTime.UtcNow.AddMinutes(5), "re", "Malmö C", "3"),
+                            MakeDeparture(DateTime.UtcNow.AddSeconds(30), DateTime.UtcNow.AddSeconds(30), "re", "Malmö C", "3"),
                             MakeDeparture(DateTime.UtcNow.AddMinutes(20), DateTime.UtcNow.AddMinutes(20), "re", "Göteborg C", "4"),
                         }
                     },
@@ -87,6 +89,7 @@ namespace PIS.Api.Controllers.Departures
             return new FeaturedDeparture()
             {
                 Destination = destination,
+                Track = "26",
                 LineName = MakeLine(lineType, lineNumber),
                 OperatorName = operatorName,
                 ScheduledDeparture = scheduledDeparture,
