@@ -28,7 +28,7 @@ namespace PIS.Api.Controllers.Departures
                         Departures = new()
                         {
                             MakeDeparture(DateTime.UtcNow.AddMinutes(1), DateTime.UtcNow.AddMinutes(1), "re", "Næstved", "1234"),
-                            MakeDeparture(DateTime.UtcNow.AddMinutes(35), DateTime.UtcNow.AddMinutes(45), "ic", "Esbjerg", "816"),
+                            MakeDeparture(DateTime.UtcNow.AddMinutes(45), DateTime.UtcNow.AddMinutes(45), "ic", "Esbjerg", "880"),
                         }
                     },
                     new()
