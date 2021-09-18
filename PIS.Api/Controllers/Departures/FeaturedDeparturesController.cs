@@ -15,7 +15,7 @@ namespace PIS.Api.Controllers.Departures
         [HttpGet("{groupKey}")]
         public List<FeaturedDestination> GetGroup(string regionKey, string stationKey, string groupKey)
         {
-            if (regionKey == "dk" && stationKey == "kbh" && groupKey == "sj")
+            if (regionKey == "dk" && stationKey == "kbh" && groupKey == "all")
             {
                 return new List<FeaturedDestination>
                 {
@@ -65,6 +65,30 @@ namespace PIS.Api.Controllers.Departures
                         {
                             MakeDeparture(DateTime.UtcNow.AddMinutes(5), DateTime.UtcNow.AddMinutes(5), "re", "Helsingør", "1"),
                             MakeDeparture(DateTime.UtcNow.AddMinutes(20), null, "re", "Helsingør", "2"),
+                        }
+                    },
+                    new()
+                    {
+                        DestinationRegion = "dk",
+                        DestinationKey = "",
+                        DestinationName = "Fredericia",
+                        DestinationNote = "via Odense",
+                        Departures = new()
+                        {
+                            MakeDeparture(DateTime.UtcNow.AddMinutes(25), DateTime.UtcNow.AddMinutes(25), "ic", "Aarhus", "998"),
+                            MakeDeparture(DateTime.UtcNow.AddMinutes(85), DateTime.UtcNow.AddMinutes(85), "icl", "Aalborg via Aarhus", "999"),
+                        }
+                    },
+                    new()
+                    {
+                        DestinationRegion = "dk",
+                        DestinationKey = "",
+                        DestinationName = "Kolding",
+                        DestinationNote = "via Odense",
+                        Departures = new()
+                        {
+                            MakeDeparture(DateTime.UtcNow.AddMinutes(45), DateTime.UtcNow.AddMinutes(45), "ic", "Esbjerg", "880"),
+                            MakeDeparture(DateTime.UtcNow.AddMinutes(105), DateTime.UtcNow.AddMinutes(105), "ic", "Esbjerg", "881"),
                         }
                     }
                 };
